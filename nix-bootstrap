@@ -1,0 +1,4 @@
+---
+layout: forward
+target: https://raw.githubusercontent.com/e-nikolov/nix-config/master/scripts/bootstrap.sh
+---
