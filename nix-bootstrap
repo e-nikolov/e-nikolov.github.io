@@ -113,7 +113,7 @@
         exit 0
     fi
 
-    if [ $NO_HOME_MANAGER ]; then
+    if [ "$NO_HOME_MANAGER" ]; then
         echo skipping home-manager
         exit 0
     fi
