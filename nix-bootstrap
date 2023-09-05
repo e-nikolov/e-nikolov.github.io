@@ -47,6 +47,9 @@
 
             exit
             ;;
+        --*)
+            oops "Unknown option $1"
+            ;;
         *)
             export HOME_CONFIG_PATH=$1
             ;;
