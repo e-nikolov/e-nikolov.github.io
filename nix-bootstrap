@@ -28,10 +28,12 @@
             FLAKE_TEMPLATE=$2
 
             shift
+            shift
             ;;
 
         --no-home-manager)
             NO_HOME_MANAGER=1
+            shift
             ;;
         --help | -h | -\?)
             {
@@ -54,7 +56,6 @@
             export HOME_CONFIG_PATH=$1
             ;;
         esac
-        shift
     done
 
     POST_SUCCESS=""
