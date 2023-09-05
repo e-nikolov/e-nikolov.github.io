@@ -29,6 +29,12 @@
 
             shift
             ;;
+
+        --no-home-manager)
+            NO_HOME_MANAGER=1
+
+            shift
+            ;;
         --help | -h | -\?)
             {
                 echo "nix flake installer [--template STRING] path STRING"
@@ -36,6 +42,7 @@
                 echo "Choose installation flavor."
                 echo ""
                 echo " --template: [bare|minimal|full|<flake-template-url>]; Defaults to minimal"
+                echo " --no-home-manager: Skips the home-manager installation"
                 echo " path:  Location to install to; Defaults to ~/nix-config"
                 echo ""
             } >&2
@@ -103,6 +110,11 @@
 
     if [ $(command -v home-manager) ]; then
         echo home-manager is present
+        exit 0
+    fi
+
+    if [ $NO_HOME_MANAGER ]; then
+        echo skipping home-manager
         exit 0
     fi
 
