@@ -115,11 +115,6 @@
         exit 0
     fi
 
-    if [ "$NO_HOME_MANAGER" ]; then
-        echo skipping home-manager
-        exit 0
-    fi
-
     if [ -d "$HOME_CONFIG_PATH" ]; then
         echo $HOME_CONFIG_PATH already exists
         rand=$(od -An -N2 -i /dev/urandom)
@@ -142,6 +137,11 @@
     sed -i s@{{username}}@"$USER"@g $flake_path
     sed -i s@{{hostname}}@"$HOST"@g $flake_path
     sed -i s@{{homedir}}@"$HOME"@g $flake_path
+
+    if [ "$NO_HOME_MANAGER" ]; then
+        echo skipping home-manager
+        exit 0
+    fi
 
     echo nix shell home-manager/master nixpkgs#jq --command sh -c ''
     nix shell home-manager/master nixpkgs#jq --command sh -c "
