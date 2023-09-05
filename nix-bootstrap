@@ -32,8 +32,6 @@
 
         --no-home-manager)
             NO_HOME_MANAGER=1
-
-            shift
             ;;
         --help | -h | -\?)
             {
